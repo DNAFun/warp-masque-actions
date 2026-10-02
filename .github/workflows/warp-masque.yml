@@ -11,11 +11,6 @@ on:
         description: artifact 保留天数
         required: false
         default: '7'
-      commit:
-        description: 把生成的 yaml 提交回仓库
-        type: boolean
-        required: false
-        default: true
   schedule:
     - cron: '0 */12 * * *'
 
@@ -80,7 +75,6 @@ jobs:
           ls -l dist
           
       - name: 提交回仓库
-        if: inputs.commit
         run: |
           set -euo pipefail
           mkdir -p configs
